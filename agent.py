@@ -15,6 +15,7 @@ import matplotlib.pyplot as plt
 from IPython import display
 import pylab as pl
 
+import time
 
 class User():
 	def __init__(self, name, state_size, action_size):
@@ -24,6 +25,7 @@ class User():
 
 	def act(self, state, tau):
 		state.print()
+		time.sleep(2)
 		action = int(input('Enter your chosen action: '))
 		pi = np.zeros(self.action_size)
 		pi[action] = 1
