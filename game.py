@@ -226,3 +226,17 @@ class GameState():
 		for r in range(6):
 			logger.info([self.pieces[str(x)] for x in self.board[7*r : (7*r + 7)]])
 		logger.info('--------------')
+
+	def print(self):
+		print()
+		tmpboard = []
+		custompieces = {'1':'XX', '0': '--', '-1':'OO'}
+		for i in range(len(self.board)):
+			if self.allowedActions.__contains__(i):
+				tmpboard.append(str(i).zfill(2))
+			else:
+				tmpboard.append(custompieces[str(self.board[i])])
+
+		for r in range(6):
+			print([x for x in tmpboard[7*r : (7*r + 7)]])
+		print('--------------')
