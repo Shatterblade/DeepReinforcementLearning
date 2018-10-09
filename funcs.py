@@ -85,7 +85,6 @@ def playMatches(player1, player2, EPISODES, logger, turns_until_tau0, memory = N
             turn = turn + 1
             if printmoves:
                 env.gameState.print()
-                time.sleep(1)
     
             #### Run the MCTS algo and return an action
             if turn < turns_until_tau0:

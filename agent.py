@@ -24,6 +24,7 @@ class User():
 		self.action_size = action_size
 
 	def act(self, state, tau):
+		time.sleep(1)
 		action = -1
 		valid = state.allowedActions
 		while 1:
