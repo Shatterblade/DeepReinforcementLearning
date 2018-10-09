@@ -27,10 +27,14 @@ class User():
 		state.print()
 		time.sleep(2)
 		action = -1
+		valid = state.allowedActions
 		while 1:
 			try:
 				action = int(input('Enter your move: '))
-				break
+				if valid.__contains__(action):
+					break
+				else:
+					print('Enter a valid move.')
 			except ValueError:
 				print('Enter a valid move.')
 		pi = np.zeros(self.action_size)
