@@ -26,7 +26,17 @@ class User():
 	def act(self, state, tau):
 		state.print()
 		time.sleep(2)
-		action = int(input('Enter your chosen action: '))
+		action = -1
+		valid = state.allowedActions()
+		while 1:
+			try:
+				action = int(input('Enter your move: '))
+				if valid.__contains__(action):
+					break
+				else:
+					print('Enter a valid move.')
+			except ValueError:
+				print('Enter a valid move.')
 		pi = np.zeros(self.action_size)
 		pi[action] = 1
 		value = 0
