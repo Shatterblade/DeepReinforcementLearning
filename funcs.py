@@ -32,12 +32,13 @@ def playMatchesBetweenVersions(env, run_version, player1version, player2version,
             player2_NN.model.set_weights(player2_network.get_weights())
         player2 = Agent('player2', env.state_size, env.action_size, config.MCTS_SIMS, config.CPUCT, player2_NN)
 
-    scores, memory, points, sp_scores = playMatches(player1, player2, EPISODES, logger, turns_until_tau0, None, goes_first)
+    printmoves = player1version == -1 or player2version == -1
+    scores, memory, points, sp_scores = playMatches(player1, player2, EPISODES, logger, turns_until_tau0, None, goes_first, printmoves)
 
     return (scores, memory, points, sp_scores)
 
 
-def playMatches(player1, player2, EPISODES, logger, turns_until_tau0, memory = None, goes_first = 0):
+def playMatches(player1, player2, EPISODES, logger, turns_until_tau0, memory = None, goes_first = 0, printmoves=False):
 
     env = Game()
     scores = {player1.name:0, "drawn": 0, player2.name:0}
@@ -103,6 +104,7 @@ def playMatches(player1, player2, EPISODES, logger, turns_until_tau0, memory = N
             state, value, done, _ = env.step(action) #the value of the newState from the POV of the new playerTurn i.e. -1 if the previous player played a winning move
             
             env.gameState.render(logger)
+            env.gameState.print()
 
             if done == 1: 
                 if memory != None:
