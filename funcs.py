@@ -110,7 +110,8 @@ def playMatches(player1, player2, EPISODES, logger, turns_until_tau0, memory = N
             env.gameState.render(logger)
 
             if done == 1:
-                env.gameState.print()
+                if printmoves:
+                    env.gameState.print()
                 if memory != None:
                     #### If the game is finished, assign the values correctly to the game moves
                     for move in memory.stmemory:
