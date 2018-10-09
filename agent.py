@@ -27,11 +27,10 @@ class User():
 		state.print()
 		time.sleep(2)
 		action = -1
-		valid = state.allowedActions
 		while 1:
 			try:
 				action = int(input('Enter your move: '))
-				if valid.__contains__(action):
+				if state.allowedActions.__contains__(action):
 					break
 				else:
 					print('Enter a valid move.')
