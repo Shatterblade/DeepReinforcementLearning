@@ -27,7 +27,7 @@ class User():
 		state.print()
 		time.sleep(2)
 		action = -1
-		valid = state.allowedActions()
+		valid = state.allowedActions
 		while 1:
 			try:
 				action = int(input('Enter your move: '))
