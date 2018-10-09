@@ -10,6 +10,8 @@ from agent import Agent, User
 
 import config
 
+import time
+
 def playMatchesBetweenVersions(env, run_version, player1version, player2version, EPISODES, logger, turns_until_tau0, goes_first = 0):
     
     if player1version == -1:
@@ -83,6 +85,7 @@ def playMatches(player1, player2, EPISODES, logger, turns_until_tau0, memory = N
             turn = turn + 1
             if printmoves:
                 env.gameState.print()
+                time.sleep(1)
     
             #### Run the MCTS algo and return an action
             if turn < turns_until_tau0:
