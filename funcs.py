@@ -110,8 +110,6 @@ def playMatches(player1, player2, EPISODES, logger, turns_until_tau0, memory = N
             env.gameState.render(logger)
 
             if done == 1:
-                if printmoves:
-                    env.gameState.print()
                 if memory != None:
                     #### If the game is finished, assign the values correctly to the game moves
                     for move in memory.stmemory:
@@ -143,7 +141,6 @@ def playMatches(player1, player2, EPISODES, logger, turns_until_tau0, memory = N
                     logger.info('DRAW...')
                     scores['drawn'] = scores['drawn'] + 1
                     sp_scores['drawn'] = sp_scores['drawn'] + 1
-
                 pts = state.score
                 points[players[state.playerTurn]['name']].append(pts[0])
                 points[players[-state.playerTurn]['name']].append(pts[1])
