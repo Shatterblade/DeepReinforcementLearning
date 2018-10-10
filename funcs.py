@@ -56,6 +56,8 @@ def playMatches(player1, player2, EPISODES, logger, turns_until_tau0, memory = N
         print (str(e+1) + ' ', end='')
 
         state = env.reset()
+        if printmoves:
+            env.gameState.print()
         
         done = 0
         turn = 0
@@ -83,8 +85,6 @@ def playMatches(player1, player2, EPISODES, logger, turns_until_tau0, memory = N
 
         while done == 0:
             turn = turn + 1
-            if printmoves:
-                env.gameState.print()
     
             #### Run the MCTS algo and return an action
             if turn < turns_until_tau0:
@@ -106,7 +106,8 @@ def playMatches(player1, player2, EPISODES, logger, turns_until_tau0, memory = N
 
             ### Do the action
             state, value, done, _ = env.step(action) #the value of the newState from the POV of the new playerTurn i.e. -1 if the previous player played a winning move
-            
+            if printmoves:
+                env.gameState.print()
             env.gameState.render(logger)
 
             if done == 1:
