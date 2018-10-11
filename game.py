@@ -1,6 +1,6 @@
 import numpy as np
 import logging
-from IPython.display import clear_output
+from IPython.display import clear_output, display
 
 class Game:
 
@@ -237,7 +237,7 @@ class GameState():
 				tmpboard.append(str(i).zfill(2))
 			else:
 				tmpboard.append(custompieces[str(self.board[i])])
-		clear_output()
+		clear_output(wait=True)
 		for r in range(6):
-			print([x for x in tmpboard[7*r : (7*r + 7)]])
-		print('--------------')
+			display([x for x in tmpboard[7*r : (7*r + 7)]])
+		display('--------------')
