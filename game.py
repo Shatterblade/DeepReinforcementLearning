@@ -1,6 +1,6 @@
 import numpy as np
 import logging
-from IPython.display import clear_output, display
+from IPython.display import clear_output, display, HTML
 
 class Game:
 
@@ -230,14 +230,20 @@ class GameState():
 
 	def print(self):
 		print()
-		tmpboard = []
-		custompieces = {'1':'XX', '0': '--', '-1':'OO'}
+		tmpboard = [[], [], [], [], [], []]
+		custompieces = {'1':'X', '0': '-', '-1':'O'}
 		for i in range(len(self.board)):
 			if self.allowedActions.__contains__(i):
-				tmpboard.append(str(i).zfill(2))
+				tmpboard[int(i/7)].append(str(i).zfill(2))
 			else:
-				tmpboard.append(custompieces[str(self.board[i])])
+				tmpboard[int(i/7)].append(custompieces[str(self.board[i])])
 		clear_output(wait=True)
-		for r in range(6):
-			print([x for x in tmpboard[7*r : (7*r + 7)]])
-		print('--------------')
+		#for r in range(6):
+			#print([x for x in tmpboard[7*r : (7*r + 7)]])
+		#print('--------------')
+		display(HTML(
+			'<table><tr>{}</tr></table>'.format(
+				'</tr><tr>'.join(
+					'<td>{}</td>'.format('</td><td>'.join(str(_) for _ in row)) for row in tmpboard)
+			)
+		))
