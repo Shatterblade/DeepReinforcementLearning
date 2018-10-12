@@ -239,5 +239,5 @@ class GameState():
 				tmpboard.append(custompieces[str(self.board[i])])
 		clear_output(wait=True)
 		for r in range(6):
-			display([x for x in tmpboard[7*r : (7*r + 7)]])
-		display('--------------')
+			print([x for x in tmpboard[7*r : (7*r + 7)]])
+		print('--------------')
