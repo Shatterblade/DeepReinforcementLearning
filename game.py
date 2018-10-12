@@ -244,6 +244,6 @@ class GameState():
 		display(HTML(
 			'<table border=1><tr>{}</tr></table>'.format(
 				'</tr><tr>'.join(
-					'<td>{}</td>'.format('</td><td>'.join(str(_) for _ in row)) for row in tmpboard)
+					'<td align="center">{}</td>'.format('</td><td align="center">'.join(str(_) for _ in row)) for row in tmpboard)
 			)
 		))
