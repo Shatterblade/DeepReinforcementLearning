@@ -242,7 +242,7 @@ class GameState():
 			#print([x for x in tmpboard[7*r : (7*r + 7)]])
 		#print('--------------')
 		display(HTML(
-			'<table><tr>{}</tr></table>'.format(
+			'<table border=1><tr>{}</tr></table>'.format(
 				'</tr><tr>'.join(
 					'<td>{}</td>'.format('</td><td>'.join(str(_) for _ in row)) for row in tmpboard)
 			)
